@@ -19,8 +19,8 @@
     "axios": "^0.27.2",
     "browserslist": "^4.20.3",
     "caniuse-lite": "^1.0.30001334",
-    "next": "10.0.0",
-    "react": "17.0.1",
+    "next": "12.0.8",
+    "react": "17.0.2",
     "react-dom": "17.0.1",
     "tailwindcss": "^1.7.4"
   },
@@ -28,6 +28,7 @@
     "@testing-library/dom": "^7.26.5",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.1",
+    "@testing-library/react-hooks": "^8.0.0",
     "@testing-library/user-event": "^14.1.1",
     "babel-jest": "27.4.6",
     "faker": "5.5.3",
@@ -35,6 +36,7 @@
     "jest-dom": "^4.0.0",
     "miragejs": "^0.1.43",
     "postcss-flexbugs-fixes": "4.2.1",
-    "postcss-preset-env": "^6.7.0"
+    "postcss-preset-env": "^6.7.0",
+    "react-test-renderer": "^16.14.0"
   }
 }

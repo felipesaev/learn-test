@@ -1,10 +1,20 @@
-import {useState} from 'react'
+import { useState } from 'react';
 
 export default function Search({ doSearch }) {
   const [term, setTerm] = useState('');
 
+  const submitHandler = (ev) => {
+    ev.preventDefault();
+    doSearch(term);
+  };
+
   return (
-    <form onSubmit={() => doSearch(term)} name="search-form" data-testid="search" className="relative mt-6 max-w-lg mx-auto">
+    <form
+      onSubmit={submitHandler}
+      name="search-form"
+      data-testid="search"
+      className="relative mt-6 max-w-lg mx-auto"
+    >
       <span className="absolute inset-y-0 left-0 pl-3 flex items-center">
         <svg className="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
           <path
