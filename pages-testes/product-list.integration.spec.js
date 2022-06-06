@@ -79,4 +79,51 @@ describe('Product List', () => {
     });
 
   });
+  it('should display the total quantity of products ', async () => {
+    server.createList('product', 10);
+
+    renderProductList();
+
+    await waitFor(() => {
+      expect(screen.getByText(/10 Products/i)).toBeInTheDocument()
+    })
+  });
+
+  it('should display product (singular) when there is only 1 product', async () => {
+    server.create('product', 1);
+
+    renderProductList();
+
+    await waitFor(() => {
+      expect(screen.getByText(/1 Product$/i)).toBeInTheDocument()
+    })
+  });
+
+  it('should display proper quantity when list is filtered', async () => {
+    
+    const screenTerm = 'relogio bonito'
+    server.createList('product', 2);
+
+    server.create('product', {
+      title: screenTerm
+    });
+
+    renderProductList();
+
+    await waitFor(() => {
+      expect(screen.getByText(/3 products/i)).toBeInTheDocument()
+    });
+
+    const form = screen.getByRole('form');
+    const input = screen.getByRole('searchbox')
+
+    await userEvent.type(input, screenTerm);
+    fireEvent.submit(form)
+
+    await waitFor(() => {
+      expect(screen.getByText(/1 product$/i)).toBeInTheDocument()
+    });
+
+  });
+
 });

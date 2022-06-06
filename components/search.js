@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { fireEvent } from '@testing-library/react';
 
 export default function Search({ doSearch }) {
   const [term, setTerm] = useState('');
@@ -7,6 +8,14 @@ export default function Search({ doSearch }) {
     ev.preventDefault();
     doSearch(term);
   };
+
+  const inputHandler = (ev) => {
+    setTerm(ev.target.value)
+    
+    if(ev.target.value === '') {
+      doSearch('')
+    }    
+  }
 
   return (
     <form
@@ -29,7 +38,7 @@ export default function Search({ doSearch }) {
 
       <input
         value={term}
-        onChange={(e) => setTerm(e.target.value)}
+        onInput={inputHandler}
         className="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline"
         type="search"
         placeholder="Search"
